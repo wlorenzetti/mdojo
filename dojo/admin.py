@@ -1,10 +1,26 @@
 from django.contrib import admin
-from .models import Dojo, Deshi
+from .models import Dojo, Deshi, Shiken, Levels
+
+
+@admin.register(Levels)
+class LevelsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Shiken)
+class ShikenAdmin(admin.ModelAdmin):
+    pass
+
+
+class ShikenInline(admin.TabularInline):
+    model = Shiken
 
 
 @admin.register(Deshi)
 class DeshiAdmin(admin.ModelAdmin):
-    pass
+    inlines = [
+        ShikenInline
+    ]
 
 
 class DeshiInline(admin.TabularInline):
@@ -17,5 +33,8 @@ class DojoAdmin(admin.ModelAdmin):
     inlines = [
         DeshiInline
     ]
+
+
+
 
 
