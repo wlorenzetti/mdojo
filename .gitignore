@@ -12,3 +12,6 @@
 
 # db not
 /db.sqlite3
+
+# node modules
+/node_modules
