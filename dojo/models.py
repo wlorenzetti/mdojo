@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+
 # Create your models here.
 
 
@@ -56,6 +57,7 @@ class Shiken(models.Model):
     level = models.ForeignKey(Levels, on_delete=models.CASCADE)
     date = models.DateField(_('Date'))
     place = models.CharField(_('Place'), max_length=255)
+    kyokai = models.ForeignKey('kyokai.Kyokai', null=True, blank=True, on_delete=models.CASCADE)
 
 
 
