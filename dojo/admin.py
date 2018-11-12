@@ -1,5 +1,7 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import Dojo, Deshi, Shiken, Levels
+from .ie.resources import DeshiResource
 
 
 @admin.register(Levels)
@@ -17,7 +19,8 @@ class ShikenInline(admin.TabularInline):
 
 
 @admin.register(Deshi)
-class DeshiAdmin(admin.ModelAdmin):
+class DeshiAdmin(ImportExportModelAdmin):
+    resource_class = DeshiResource
     inlines = [
         ShikenInline
     ]
@@ -33,8 +36,6 @@ class DojoAdmin(admin.ModelAdmin):
     inlines = [
         DeshiInline
     ]
-
-
 
 
 
